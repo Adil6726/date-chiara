@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Une petite question pour toi...</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="hearts-bg" id="hearts-bg"></div>
+
+    <div class="card" id="main-card">
+        
+        <!-- ÉTAPE 1 : LA DEMANDE -->
+        <div id="step-1" class="step active">
+            <div class="photo-area first-page-photos">
+                <div class="polaroid polaroid-large tilt-l"><img src="elle.jpg" alt="Elle" class="img-top-align"></div>
+                <div class="polaroid polaroid-large tilt-r"><img src="toi.jpg" alt="Toi"></div>
+            </div>
+            <div class="deco-emojis">✨ ❤️</div>
+            <h2>Veux-tu aller en date avec moi ?</h2>
+            <div class="btn-wrapper">
+                <button id="btn-yes" onclick="nextStep(2)">OUI !</button>
+                <button id="btn-no" onmouseover="moveNoButton()">Non</button>
+            </div>
+        </div>
+
+        <!-- ÉTAPE 2 : LA RÉACTION OUI -->
+        <div id="step-2" class="step">
+            <div class="photo-area second-page-photos">
+                <div class="polaroid polaroid-medium tilt-l"><img src="sushi.jpg" alt="Sushi"></div>
+                <div class="polaroid polaroid-medium tilt-r"><img src="mii.jpg" alt="Mii"></div>
+            </div>
+            <div class="deco-emojis">🎈 🥂</div>
+            <h2>Attends, t'as vraiment dit OUI ?! ❤️</h2>
+            <p class="sub-text">Arrête tu vas me faire rougir... 🥰 C'est parti pour l'organisation de nos 1 ans ! ✨</p>
+            <button onclick="nextStep(3)">Suivant ✨</button>
+        </div>
+
+        <!-- ÉTAPE 3 : LA DATE ET L'HEURE -->
+        <div id="step-3" class="step">
+            <div class="photo-area">
+                <div class="polaroid tilt-l"><img src="avion.jpg" alt="Avion"></div>
+                <div class="polaroid tilt-r"><img src="enfant.jpg" alt="Enfant"></div>
+            </div>
+            <h2>La date du date 📅</h2>
+            <div style="width: 100%;">
+                <p class="question-text">Quand madame serait-elle libre ? ✨</p>
+                <input type="date" id="date-picker">
+                <select id="time-picker" onchange="checkTimeSelection()">
+                    <option value="">Choisis l'heure... 🕒</option>
+                    <option value="12h00">12h00 - Pour bien profiter de la journée ☀️</option>
+                    <option value="14h00">14h00 - L'heure pour bien se faire belle 💅</option>
+                    <option value="16h00">16h00 - C'est bien tard mais pourquoi pas ☕</option>
+                    <option value="18h00">18h00 - Là tu te fous de ma gueule 😡</option>
+                </select>
+                <div id="special-msg"></div>
+            </div>
+            <button onclick="saveDateTime()">On continue →</button>
+        </div>
+
+        <!-- ÉTAPE 4 : LE REPAS -->
+        <div id="step-4" class="step">
+            <div class="photo-area spec-step-4">
+                <div class="polaroid polaroid-large"><img src="couple1.png" alt="couple1"></div>
+            </div>
+            <div>
+                <h2>On mange quoi ? 🍽️</h2>
+                <div id="compliment-msg" style="font-size: 16px; color: #ff1493; font-weight: bold; height: 20px; margin-top: -5px; margin-bottom: 5px;"></div>
+            </div>
+            <div class="food-grid">
+                <div class="food-option" id="custom-food-opt" onclick="askCustomFood(this)"><span>✨</span><span class="food-label" id="custom-text">Tu choisis</span></div>
+                <div class="food-option" onclick="selectFood(this, 'un McDo')"><span>🍔🍟</span><span class="food-label">McDo</span></div>
+                <div class="food-option" onclick="selectFood(this, 'des Sushis')"><span>🍣🥢</span><span class="food-label">Sushis</span></div>
+                <div class="food-option" onclick="selectFood(this, 'un Resto en tête-à-tête')"><span>🥂✨</span><span class="food-label">Resto en tête-à-tête</span></div>
+            </div>
+            <button onclick="finalStep()">C'est mon dernier mot ! 🤍</button>
+        </div>
+
+        <!-- ÉTAPE 5 : LE RÉCAPITULATIF FINAL -->
+        <div id="step-5" class="step">
+            <div class="photo-area spec-step-5">
+                <div class="polaroid polaroid-large"><img src="couple2.jpg" alt="Fin"></div>
+            </div>
+            <div class="deco-emojis">❤️ ✨</div>
+            <h2>C'est validé ! 🥰</h2>
+            <p id="summary-text"></p>
+            <p class="final-footer">Envoie-moi un message pour me confirmer tout ça ! 😉</p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
